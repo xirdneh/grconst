@@ -1,0 +1,17 @@
+header {
+    background:black;
+}
+
+.img-circle {
+    height:100%;
+}
+
+.team-member .img-circle {
+    max-height:250px;
+}
+
+.portfolio-image-wrapper .img-thumbnail {
+    border:none;
+    width:100%;
+    height:100%;
+}
