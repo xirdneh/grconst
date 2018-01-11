@@ -20,3 +20,5 @@ junit.xml
 credentials.dat
 .nox
 grconst/settings/db.py
+./static
+./media
