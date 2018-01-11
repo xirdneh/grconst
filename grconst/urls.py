@@ -14,11 +14,22 @@
 
 from django.conf.urls import include, url
 from django.contrib import admin
-from grconst.apps.site_content.views import IndexView
 from django.conf import settings
 from django.conf.urls.static import static
+from django.contrib.sitemaps.views import sitemap
+from django.views.generic.base import TemplateView
+from grconst.apps.site_content.views import IndexView, MessageProcessView
+from grconst.sitemaps import StaticViewSitemap
 
 urlpatterns = [
-    url(r'^$', IndexView.as_view()),
+    url(r'^googlee127aae73e8dcd95\.html$', TemplateView.as_view(template_name='googlee127aae73e8dcd95.html')),
+    url(r'^sitemap\.xml$', sitemap, 
+        {'sitemaps': {
+            'static': StaticViewSitemap
+            }
+        },
+        name='django.contrib.sitemaps.views.sitemap'),
+    url(r'^post-message/', MessageProcessView.as_view(), name='message-process'),
     url(r'^admin/', include(admin.site.urls)),
+    url(r'^$', IndexView.as_view(), name='index'),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
